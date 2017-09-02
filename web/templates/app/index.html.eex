@@ -85,6 +85,8 @@
                 </div>
             </div>
             <!--/.col-->
+
+            <%= link "Add new app", to: app_path(@conn, :new) %>
         </div>
         <!--/.row-->
     </div>

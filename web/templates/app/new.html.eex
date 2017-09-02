@@ -1,0 +1,66 @@
+<%= form_for @changeset, app_path(@conn, :create), fn f -> %>
+    <%= if f.errors != [] do %>
+        <div class="col-sm-6 col-md-4">
+            <div class="card card-inverse card-danger">
+                <div class="card-header">
+                    Card title
+                </div>
+                <div class="card-block">
+                 <%= for {attr, message} <- f.errors do %>
+                   <%= humanize(attr) %> <%= message %>
+                 <% end %>
+                </div>
+            </div>
+        </div>
+    <% end %>
+
+    <div class="col-sm-12">
+        <div class="card">
+            <div class="card-header">
+                <strong>App</strong>
+                <small>Form</small>
+            </div>
+            <div class="card-block">
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <%= text_input f, :name, class: "form-control", placeholder: 'Enter your app name' %>
+                </div>
+                <div class="form-group">
+                    <label for="branch">Repo branch</label>
+                    <%= text_input f, :repository_branch, class: "form-control", placeholder: 'Enter your repository branch' %>
+                </div>
+                <div class="form-group">
+                    <label for="github">Github repo</label>
+                    <%= text_input f, :github_repo, class: "form-control", placeholder: 'Enter your github repo' %>
+                </div>
+                <div class="form-group">
+                    <label for="bitbucket">Bitbucket repo</label>
+                    <%= text_input f, :bitbucket_repo, class: "form-control", placeholder: 'Enter your bitbucket repo' %>
+                </div>
+
+                <div class="form-group">
+                    <label for="host">Asset host</label>
+                    <%= text_input f, :asset_host, class: "form-control", placeholder: 'Enter your asset host' %>
+                </div>
+                <div class="form-group">
+                    <label for="version">App version</label>
+                    <%= text_input f, :current_app_version, class: "form-control", placeholder: 'Enter your app version' %>
+                </div>
+
+                <div class="checkbox">
+                    <label for="checkbox1">
+                       <%= checkbox f, :notify_on_errs %> Notify on errors
+                    </label>
+
+                    <label for="checkbox2">
+                       <%= checkbox f, :notify_all_users %> Notify all users
+                    </label>
+                </div>
+
+                <div class="form-actions">
+                    <%= submit "Save", class: "btn btn-primary" %>
+                </div>
+            </div>
+        </div>
+    </div>
+<% end %>
