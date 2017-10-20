@@ -22,6 +22,6 @@ defmodule ErrbitElixir.App do
   def changeset(struct, params \\ %{}) do
     struct
     |> cast(params, [:name, :api_key, :github_repo, :bitbucket_repo, :asset_host, :repository_branch, :current_app_version, :notify_all_users, :notify_on_errs, :email_at_notices])
-    |> validate_required([:name, :api_key, :github_repo, :bitbucket_repo, :asset_host, :repository_branch, :current_app_version, :notify_all_users, :notify_on_errs, :email_at_notices])
+    |> validate_required([:name, :github_repo, :bitbucket_repo, :asset_host, :repository_branch, :current_app_version, :notify_all_users, :notify_on_errs])
   end
 end

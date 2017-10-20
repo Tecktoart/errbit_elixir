@@ -58,14 +58,15 @@ exports.config = {
 
     copycat: {
       "fonts": [
-          "node_modules/font-awesome/fonts",
-          "web/static/vendor/fonts"
-      ], // copy node_modules/font-awesome/fonts/* to priv/static/fonts/
+          "node_modules/font-awesome/fonts"
+
+      ],
+      "images": ['web/static/images']
     },
     sass: {
       mode: "native",
       options: {
-        includePaths: ["node_modules/bootstrap/scss", "node_modules/font-awesome/scss"], // tell sass-brunch where to look for files to @import
+        includePaths: ["node_modules/font-awesome/scss"], // tell sass-brunch where to look for files to @import
         precision: 8 // minimum precision required by bootstrap
       }
     }
@@ -80,10 +81,11 @@ exports.config = {
   npm: {
     enabled: true,
     globals: { // Bootstrap JavaScript requires both '$', 'jQuery', and Tether in global scope
-        $: 'jquery',
-        jQuery: 'jquery',
-        Tether: 'tether',
-        bootstrap: 'bootstrap' // require Bootstrap JavaScript globally too
+      $: 'jquery',
+      jQuery: 'jquery',
+      Tether: 'tether',
+      Popper: 'popper.js',
+      bootstrap: 'bootstrap' // require Bootstrap JavaScript globally too
     }
   }
 };
