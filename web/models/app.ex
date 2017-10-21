@@ -23,5 +23,15 @@ defmodule ErrbitElixir.App do
     struct
     |> cast(params, [:name, :api_key, :github_repo, :bitbucket_repo, :asset_host, :repository_branch, :current_app_version, :notify_all_users, :notify_on_errs, :email_at_notices])
     |> validate_required([:name, :github_repo, :bitbucket_repo, :asset_host, :repository_branch, :current_app_version, :notify_all_users, :notify_on_errs])
+    |> generate_api_key
+  end
+
+  def generate_api_key(changeset) do
+    case changeset do
+      %Ecto.Changeset{valid?: true} ->
+        put_change(changeset, :api_key, SecureRandom.urlsafe_base64())
+      _ ->
+        changeset
+    end
   end
 end

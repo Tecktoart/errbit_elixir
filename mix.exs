@@ -42,7 +42,8 @@ defmodule ErrbitElixir.Mixfile do
       {:gettext, "~> 0.11"},
       {:cowboy, "~> 1.0"},
       {:comeonin, "~> 2.5"},
-      {:guardian, "~> 0.14"}
+      {:guardian, "~> 0.14"},
+      {:secure_random, "~> 0.2"}
     ]
   end
 

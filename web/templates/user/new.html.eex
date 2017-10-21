@@ -1,25 +1,40 @@
-# web/templates/user/new.html.eex
-<h1>User Registration</h1>
-<%= form_for @changeset, user_path(@conn, :create), fn f -> %>
-  <%= if @changeset.action do %>
-    <div class="alert alert-danger">
-      <p>There are some errors</p>
+<div class="col-md-8">
+<div class="card-group mb-0">
+    <div class="card p-4">
+        <%= form_for @changeset, user_path(@conn, :create), fn f -> %>
+            <h1>Register</h1>
+            <p class="text-muted">Create your account</p>
+            <div class="input-group mb-3">
+                <span class="input-group-addon"><i class="icon-user"></i>
+                </span>
+                <%= text_input f, :name, placeholder: "Name", class: "form-control" %>
+                <%= error_tag f, :name %>
+            </div>
+
+            <div class="input-group mb-3">
+                <span class="input-group-addon">@</span>
+                <%= text_input f, :email, placeholder: "Email", class: "form-control" %>
+                <%= error_tag f, :email %>
+            </div>
+
+            <div class="input-group mb-3">
+                <span class="input-group-addon"><i class="icon-lock"></i>
+                </span>
+                 <%= password_input f, :password, placeholder: "Password", class: "form-control" %>
+                 <%= error_tag f, :password %>
+            </div>
+
+            <%= submit "Create Account", class: "btn btn-block btn-success" %>
+        <% end %>
     </div>
-  <% end %>
-  <div class="form-group">
-    <%= text_input f, :email, placeholder: "Email",
-                              class: "form-control" %>
-    <%= error_tag f, :email %>
-  </div>
-  <div class="form-group">
-    <%= text_input f, :name, placeholder: "Name",
-                             class: "form-control" %>
-    <%= error_tag f, :name %>
-  </div>
-  <div class="form-group">
-    <%= password_input f, :password, placeholder: "Password",
-                                     class: "form-control" %>
-    <%= error_tag f, :password %>
-  </div>
-  <%= submit "Create User", class: "btn btn-primary" %>
-<% end %>
+     <div class="card text-white bg-primary py-5 d-md-down-none" style="width:44%">
+        <div class="card-body text-center">
+            <div>
+                <h2>Sign up</h2>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                <%= link 'Login', to: user_path(@conn, :new), class: "btn btn-primary active mt-3" %>
+            </div>
+        </div>
+    </div>
+</div>
+</div>

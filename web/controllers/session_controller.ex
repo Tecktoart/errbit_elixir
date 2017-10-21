@@ -5,6 +5,7 @@ defmodule ErrbitElixir.SessionController do
 
   alias ErrbitElixir.User
 
+  plug :put_layout, "auth.html"
   plug :scrub_params, "session" when action in ~w(create)a
 
   def new(conn, _) do

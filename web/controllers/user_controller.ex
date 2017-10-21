@@ -1,9 +1,15 @@
 defmodule ErrbitElixir.UserController do
   use ErrbitElixir.Web, :controller
 
+  plug :put_layout, "auth.html"
   plug :scrub_params, "user" when action in [:create]
 
   alias ErrbitElixir.User
+
+  def index(conn, _params) do
+    users = Repo.all(User)
+    render(conn, "index.html", users: users)
+  end
 
   def show(conn, %{"id" => id}) do
     user = Repo.get!(User, id)
@@ -27,5 +33,4 @@ defmodule ErrbitElixir.UserController do
         render(conn, "new.html", changeset: changeset)
     end
   end
-
 end
